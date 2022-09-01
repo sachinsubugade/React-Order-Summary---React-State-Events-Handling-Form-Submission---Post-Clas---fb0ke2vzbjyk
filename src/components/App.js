@@ -13,12 +13,11 @@ const App = () => {
   const [currentPlan, setCurrentPlan] = useState();
 
   const changeHandler = (e) => {
-
+    const selectedPlan = options.find((opt) => opt.key == e.target.value);
+    setCurrentPlan(selectedPlan);
   };
 
-  const submitHandler = (e) => {
-    
-  };
+  const submitHandler = (e) => {};
 
   return (
     <div id="main">
@@ -37,7 +36,7 @@ const App = () => {
             any device anywhere you like.
           </p>
         </div>
-        <form onSubmit={}>
+        <form onSubmit={() => {}}>
           <div className="select-container">
             <div className="music-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -52,16 +51,19 @@ const App = () => {
               </svg>
             </div>
             <div className="plan">
-              <h4 id="plan-title"></h4>
-              <p id="plan-price"></p>
+              <h4 id="plan-title">{currentPlan?.plan}</h4>
+              <p id="plan-price">{currentPlan?.price}</p>
             </div>
-            <select onChange={changeHandler} className="select" id="select">
-              <option disabled selected>
-                Change
-              </option>
+            <select
+              defaultValue={"Change"}
+              onChange={changeHandler}
+              className="select"
+              id="select"
+            >
+              <option disabled>Change</option>
               {options.map((option) => (
                 <option key={option.key} value={option.key}>
-                 
+                  {option.plan}
                 </option>
               ))}
             </select>
