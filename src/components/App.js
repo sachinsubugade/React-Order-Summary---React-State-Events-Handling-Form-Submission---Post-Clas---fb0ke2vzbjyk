@@ -10,14 +10,14 @@ const options = [
 ];
 
 const App = () => {
-  const [currentPlan, setCurrentPlan] = useState(-1);
-  const [selectedPlanInfo, setSelectedPlanInfo] = useState(undefined);
+  const [currentPlan, setCurrentPlan] = useState();
+  // const [selectedPlanInfo, setSelectedPlanInfo] = useState(undefined);
 
   const changeHandler = (e) => {
     const selectedId = parseInt(e.target.value);
     const selectedPlan = options.find((opt) => opt.key === selectedId);
-    setSelectedPlanInfo(selectedPlan);
-    setCurrentPlan(selectedId);
+    // setSelectedPlanInfo(selectedPlan);
+    setCurrentPlan(selectedPlan);
   };
 
   const submitHandler = (e) => {};
@@ -54,17 +54,17 @@ const App = () => {
               </svg>
             </div>
             <div className="plan">
-              <h4 id="plan-title">{selectedPlanInfo?.plan}</h4>
-              <p id="plan-price">{selectedPlanInfo?.price}</p>
+              <h4 id="plan-title">{currentPlan?.plan}</h4>
+              <p id="plan-price">{currentPlan?.price}</p>
             </div>
             <select
               // defaultValue={"-1"}
-              value={currentPlan}
+              // value={currentPlan}
               onChange={changeHandler}
               className="select"
               id="select"
             >
-              <option disabled selected value={-1}>
+              <option disabled selected>
                 Change
               </option>
               {options.map((option) => (
