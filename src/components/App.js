@@ -10,7 +10,7 @@ const options = [
 ];
 
 const App = () => {
-  const [currentPlan, setCurrentPlan] = useState("-1");
+  const [currentPlan, setCurrentPlan] = useState(-1);
   const [selectedPlanInfo, setSelectedPlanInfo] = useState(undefined);
 
   const changeHandler = (e) => {
@@ -58,13 +58,13 @@ const App = () => {
               <p id="plan-price">{selectedPlanInfo?.price}</p>
             </div>
             <select
-              // defaultValue={"Change"}
+              // defaultValue={"-1"}
               value={currentPlan}
               onChange={changeHandler}
               className="select"
               id="select"
             >
-              <option disabled selected value={"-1"}>
+              <option disabled selected value={-1}>
                 Change
               </option>
               {options.map((option) => (
